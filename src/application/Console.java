@@ -3,32 +3,47 @@ package application;
 import java.util.Scanner;
 
 public class Console {
-	Scanner scanner = new Scanner(System.in);
-	
-	public void displayCommands() {
-		
-		for (Commands command: Commands.values()) {
-			System.out.println(command);
-		}
-	}
-	
-	public Client login() {
-		
-		System.out.print("Please type youre id > ");
-		String clientId = scanner.nextLine();
-		
-		System.out.print("Please insert youre pin > ");
-		String pinId = scanner.nextLine();
-		
-		//check client pin
-		
-		return new Client(clientId, pinId);
-	}
-	
-	public void run() {
-		Pair<String, String> client = login();
-		System.out.println("Client with id: " + client.getValue() + " has login...");
-		displayCommands();
+	private Atm atm;
+	private HandlerLogIn handlerLogIn;
+	private HandlerClientCommand handlerClientCommand;
+	private HandlerAdminCommand handlerAdminCommand;
 
+	Console(Atm atm) {
+		this.atm = atm;
 	}
+
+	public void run() throws Exception {
+		//TODO while pana la stop
+		
+		login();
+		command();
+		logout(); 
+		
+	}
+
+	private void login() throws Exception {
+		
+		handlerLogIn = new HandlerLogIn(atm);
+		handlerLogIn.run();
+		
+		System.out.println("\nClient ID: " + atm.getClient().getId() + "\tSTATUS: < LOG IN sucessfully! >");
+		System.out.println("\t\tWelcome!");
+	}
+
+	private void command() {
+		
+		//if (atm.isAdmin(client)) {
+			//handlerAdminCommand = new HandlerAdminCommand(atm);
+		//} else {
+			handlerClientCommand = new HandlerClientCommand(atm);
+			handlerClientCommand.run();
+		//}
+		
+	}
+	
+	private void logout() {
+		System.out.println("\nClient ID: " + atm.getClient().getId() + "\tSTATUS: < LOG OUT sucessfully! >");
+	}
+	
 }
+

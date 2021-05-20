@@ -3,14 +3,35 @@ package application;
 class Client {
 	private String id;
 	private String pin;
-	private boolean blockAccount = false;
+	private double sold;
+	private String coin;
+	private boolean blockedAccount = false;
 	private boolean clientBank;
 
-	Client(String id, String pin) {
+	public void setId(String id) {
 		this.id = id;
-		this.pin = pin;
 	}
 
+	public void setPin(String pin) {
+		this.pin = pin; 
+	}
+	
+	public void setSold(double sold) {
+		this.sold = sold;
+	}
+	
+	public void setCoin(String coin) {
+		this.coin = coin;
+	}
+	
+	public void setBlockedAccount(boolean blockedAccount) {
+		this.blockedAccount = blockedAccount;
+	}
+	
+	public void setClientBank(boolean clientBank) {
+		this.clientBank = clientBank;
+	}
+	
 	public String getId() {
 		return id;
 	}
@@ -18,21 +39,25 @@ class Client {
 	public String getPin() {
 		return pin;
 	}
-
-	public boolean isBlockAccount() {
-		return blockAccount;
+	
+	public double getSold() {
+		return sold;
 	}
 
-	public void setBlockAccount(boolean blockAccount) {
-		this.blockAccount = blockAccount;
+	public String getCoin() {
+		return coin;
+	}
+
+	public boolean isBlockAccount() {
+		return blockedAccount;
 	}
 
 	public boolean isClientBank() {
 		return clientBank;
 	}
-
-	public void setClientBank(boolean clientBank) {
-		this.clientBank = clientBank;
+	
+	@Override
+	public String toString() {
+		return "Client with id " + id + " and curren sold " + sold + " " + coin;
 	}
-
 }
