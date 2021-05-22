@@ -5,7 +5,7 @@ class Client {
 	private String pin;
 	private double sold;
 	private String coin;
-	private boolean blockedAccount = false;
+	private boolean blockedAccount;
 	private boolean clientBank;
 
 	public void setId(String id) {
@@ -48,11 +48,11 @@ class Client {
 		return coin;
 	}
 
-	public boolean isBlockAccount() {
+	public boolean getBlockAccount() {
 		return blockedAccount;
-	}
+	} 
 
-	public boolean isClientBank() {
+	public boolean getClientBank() {
 		return clientBank;
 	}
 	

@@ -16,7 +16,7 @@ Depunerile, extragerile se vor putea face si in/din monede diferite de cea a con
 citita dintr-un fisier.  
 
 De la ATM, vor putea extrage bani si clienti care nu se afla in baza de clienti curenta, daca sunt de acord sa achite 
-un comision de 0.1% din valoarea regragerii, iar actiunile lor vor trebui salvate intr-un fisier separat.
+un comision de 0.1% din valoarea retragerii, iar actiunile lor vor trebui salvate intr-un fisier separat.
 
 Conturile vor avea un indicator de stare(activ, blocat). Schimbarea starii din activ in blocat se va face daca PIN-ul 
 este introdus in oglinda.

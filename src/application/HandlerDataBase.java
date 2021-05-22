@@ -25,18 +25,14 @@ public class HandlerDataBase {
 		}
 		
 		return false;
-	}
+	} 
 	
-	public boolean checkPin(String clientPin) {
-		return clientPin.equals(lastLineRead[1].trim());
-	}
-
-	public void CompleteClientProfile(Client client) { 
-		client.setId(lastLineRead[0]);
-		client.setPin(lastLineRead[1]);
-		client.setSold(Double.parseDouble(lastLineRead[2]));
-		client.setCoin(lastLineRead[3]);
-		client.setBlockedAccount(Boolean.parseBoolean(lastLineRead[4]));
-		client.setClientBank(Boolean.parseBoolean(lastLineRead[5]));
+	public void CompleteClientProfile(Client client) {  
+		client.setId(lastLineRead[0].trim());
+		client.setPin(lastLineRead[1].trim());
+		client.setSold(Double.parseDouble(lastLineRead[2].trim()));
+		client.setCoin(lastLineRead[3].trim());
+		client.setBlockedAccount(Boolean.parseBoolean(lastLineRead[4].trim()));
+		client.setClientBank(Boolean.parseBoolean(lastLineRead[5].trim()));
 	}
 }

@@ -15,8 +15,8 @@ public class HandlerLogIn {
 
 		try {
 			insertId();
+			atm.CompleteClientProfile(); 
 			insertPin();
-			atm.CompleteClientProfile();
 			return; 
 		} catch (Exception e) {
 			throw e;
@@ -33,25 +33,39 @@ public class HandlerLogIn {
 			clientId = scanner.nextLine();
 			if (atm.isClientIdValid(clientId)) 
 				return;
-			System.out.print("Your id could not be identified. It should be 3 digits > ");
+			System.out.print("Your id could not be identified. It should be 3 digits.\nTry again > ");
 		}
-
-		throw new Exception("\nYour id could not be identified 3 times in a row. Instant LOG OUT");
+		
+		throw new Exception("\nSTATUS: < Instant LOG OUT! >\nYour id could not be identified 3 times in a row.");
 	}
 
 	private void insertPin() throws Exception {
-
-		String clientPin;
 		
 		System.out.print("Please insert youre pin > ");
 
 		for (int i = 0; i < 3; i++) {
-			clientPin = scanner.nextLine();
-			if (atm.isClientPinValid(clientPin)) 
-				return;
-			System.out.print("Wrong pin. Please try again > ");
+			String clientPin = scanner.nextLine();
+			try {
+				if (isClientPinValid(clientPin))
+					return;
+				System.out.print("Wrong pin. Please try again > ");
+			} catch (Exception e) {
+				throw e;
+			}
+			
 		}
+		
+		throw new Exception("\nSTATUS: < Instant LOG OUT! > \nYou entered wrong pin 3 times in a row.");
+	}
+	
+	private boolean isClientPinValid(String clientPin) throws Exception {
+		
+		if (atm.blockClient(clientPin))
+			throw new Exception("\nSTATUS: < BLOCK ACCOUNT! >\nYour account was blocked. Contact Administrator for more details.");
 
-		throw new Exception("You entered wrong pin 3 time. Instant LOG OUT");
+		if (atm.isClientPinValid(clientPin)) 
+			return true;
+		
+		return false;
 	}
 }
