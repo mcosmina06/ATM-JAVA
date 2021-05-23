@@ -66,7 +66,6 @@ public class Atm {
 	}
 
 	private boolean isValueLow(double value, String coin) {
-
 		double limit = handlerExchange.getValueConverted(ATM_LIMIT, coin, "RON");
 
 		if (value < limit)
@@ -76,7 +75,6 @@ public class Atm {
 	}
 
 	private boolean isSoldSufficient(double value, String coin) {
-
 		if (value > sold.get(coin) - LIMIT.get(coin))
 			return false;
 
@@ -91,7 +89,6 @@ public class Atm {
 	}
 
 	public void add(double value, String coin) {
-
 		if (handlerClient.needToConvert(coin))
 			value = handlerExchange.getValueConverted(value, handlerClient.getCoin(), coin);
 		handlerClient.add(value);

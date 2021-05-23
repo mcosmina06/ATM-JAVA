@@ -1,4 +1,6 @@
 123, 5555, 100, $, true, true
 101, 1234, 8900.0, RON, true, true
-221, 5454, 10000, €, false, true
+221, 5454, 9890.0, €, false, false
 000, 1111, 10000, €, false, false
+444, 879, 500, RON, true, false
+111, 333, 3000, $, true, true

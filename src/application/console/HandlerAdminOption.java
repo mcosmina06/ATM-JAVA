@@ -35,8 +35,10 @@ public class HandlerAdminOption {
 		String [] args = s.split("_");
 		
 		commandName = args[1].trim();
+		
 		if (args.length >= 3)
 			commandArg1 = args[2].trim();
+		
 		if (args.length >= 4) {
 			commandArg2 = args[3].trim();
 			commandArg3 = args[4].trim();
