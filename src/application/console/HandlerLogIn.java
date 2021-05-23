@@ -1,6 +1,7 @@
-package application;
+package application.console;
 
 import java.util.Scanner;
+import application.atm.Atm;
 
 public class HandlerLogIn {
 	Scanner scanner = new Scanner(System.in);
@@ -15,7 +16,6 @@ public class HandlerLogIn {
 
 		try {
 			insertId();
-			atm.CompleteClientProfile(); 
 			insertPin();
 			return; 
 		} catch (Exception e) {
@@ -60,11 +60,11 @@ public class HandlerLogIn {
 	
 	private boolean isClientPinValid(String clientPin) throws Exception {
 		
-		if (atm.blockClient(clientPin))
-			throw new Exception("\nSTATUS: < BLOCK ACCOUNT! >\nYour account was blocked. Contact Administrator for more details.");
-
 		if (atm.isClientPinValid(clientPin)) 
 			return true;
+		
+		if (atm.blockClient(clientPin))
+			throw new Exception("\nSTATUS: < BLOCK ACCOUNT! >\nYour account was blocked. Contact Administrator for more details.");
 		
 		return false;
 	}

@@ -10,7 +10,7 @@ Identificarea unui client se va face printr-un cod unic de 3 cifre, urmat de un 
 Baza de clienti ai "bancii" va fi salvata, citita si updatata din fisier(se lasa la alegere designul si structura de fisiere),
 dar in momentul in care utilizatorul face o extragere sau o depunere, modificarea va fi persistata in fisier.
 
-In momentul depunerii sau extragerii, suma va fi in formata din valoarea numerica, urmata de moneda.
+In momentul depunerii sau extragerii, suma va fi formata din valoarea numerica, urmata de moneda.
 (ex 100RON, 120$) Se accepta urmatoarele monede(RON, $, €).
 Depunerile, extragerile se vor putea face si in/din monede diferite de cea a contului, iar rata de conversie va fi 
 citita dintr-un fisier.  

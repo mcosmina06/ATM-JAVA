@@ -1,6 +1,6 @@
-package application;
+package application.user;
 
-class Client {
+public class Client {
 	private String id;
 	private String pin;
 	private double sold;

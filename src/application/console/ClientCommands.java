@@ -1,4 +1,4 @@
-package application;
+package application.console;
 
 public enum ClientCommands {
 	SOLD(1), WITHDRAW(2), ADD(3), EXCHANGE(4);
