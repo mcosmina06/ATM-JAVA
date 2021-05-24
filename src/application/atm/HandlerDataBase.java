@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class HandlerDataBase {
@@ -15,6 +16,7 @@ public class HandlerDataBase {
 	private int indexClientLine;
 	private String [] clientLine;
 	private ArrayList<String> buffer = new ArrayList<String>();
+	private DecimalFormat df = new DecimalFormat("#.00");
 	
 	protected boolean serchClient(String clientId) {
 		ReadFile(clientId);
@@ -65,7 +67,7 @@ public class HandlerDataBase {
 	protected void updateClientProfile(Client client) {
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter("DataBase.txt", false))) {
 			
-			String updatedClientInfo = client.getId() + ", " + client.getPin() + ", " + client.getSold() + ", " 
+			String updatedClientInfo = client.getId() + ", " + client.getPin() + ", " + df.format(client.getSold()) + ", " 
 	        		 + client.getCoin() + ", " + client.getBlockAccount() + ", " + client.getClientBank() + "\n";
 			
 			buffer.set(indexClientLine, updatedClientInfo);

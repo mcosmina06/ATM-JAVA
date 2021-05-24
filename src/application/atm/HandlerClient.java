@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 
 public class HandlerClient {
@@ -15,7 +16,8 @@ public class HandlerClient {
 	private Client client;
 	private History history;
 	private HandlerDataBase handlerDataBase;
-
+	
+	private DecimalFormat df = new DecimalFormat("#.00");
 
 	public HandlerClient() {
 		history = new History(clientsHistoryFileName, othersHistoryFileName);
@@ -51,7 +53,7 @@ public class HandlerClient {
 		if (clientPin.equals(client.getPin())) {
 			return true;
 		}
-
+		
 		return false;
 	}
 
@@ -72,9 +74,10 @@ public class HandlerClient {
 	}
 
 	protected String sold() {
+
 		history.update("ID: " + client.getId() + "\t" + "ACTION: sold \t" 
 				+ "TIME: " + LocalDateTime.now(),  client.getClientBank());
-		return client.getSold() + " " + client.getCoin();
+		return df.format(client.getSold()) + " " + client.getCoin();
 	}
 
 	protected boolean needToConvert(String coin) {
@@ -94,19 +97,19 @@ public class HandlerClient {
 			client.setSold(client.getSold() - (0.1 * value));
 		}
 
-		history.update("ID: " + client.getId() + "\t" + "ACTION: withdraw \t" + value 
+		history.update("ID: " + client.getId() + "\t" + "ACTION: withdraw \t" + df.format(value) 
 				+ "\t TIME: " + LocalDateTime.now(), client.getClientBank());
 	}
 
 	protected void add(double value) {
 		client.setSold(value + client.getSold());
-		history.update("ID: " + client.getId() + "\t" + "ACTION: add \t" + value 
+		history.update("ID: " + client.getId() + "\t" + "ACTION: add \t" + df.format(value) 
 				+ "\t TIME: " + LocalDateTime.now(), client.getClientBank());
 	}
 
 
 	protected void exchange(double value, String coin, String coinOfExchange) {
-		history.update("ID: " + client.getId() + "\t" + "ACTION: exchange " + value + " " 
+		history.update("ID: " + client.getId() + "\t" + "ACTION: exchange " + df.format(value) + " " 
 				+ coin + " in " + coinOfExchange+ "\t TIME: " + LocalDateTime.now(), client.getClientBank());
 	}
  

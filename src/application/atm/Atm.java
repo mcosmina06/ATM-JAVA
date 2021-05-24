@@ -50,7 +50,7 @@ public class Atm {
 	public int withdraw(double value, String coin) {
 		double convertedValue = value;
 
-		if (!handlerClient.needToConvert(coin))
+		if (handlerClient.needToConvert(coin))
 			convertedValue = handlerExchange.getValueConverted(value, handlerClient.getCoin(), coin);
 
 		if (!handlerClient.isSoldSufficient(convertedValue, coin) || !isSoldSufficient(value, coin))
